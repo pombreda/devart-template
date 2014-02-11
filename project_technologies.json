@@ -1,16 +1,15 @@
 {
     "technologies": {
         "apis": [
-            "insert apis"
+            "maps"
         ],
         "platforms": [
-            "insert platforms"
         ],
         "toolkits": [
-            "insert toolkits"
+			"opencv", "mapnik"
         ]
     },
     "themes": [
-        "insert themes"
+        "maps", "image processing" 
     ]
 }

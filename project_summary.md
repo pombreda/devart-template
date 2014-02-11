@@ -1,33 +1,28 @@
 # Project Title
-Insert the name of your project
+Mapify
 
 ## Authors
-- Insert main author name, surname, github account
-- Insert other author(s) name, surname, github account (one per list element)
+- Rares Barbantan : @rbarbantan
 
 ## Description
-Insert a description containing about 100 to 150 words, including your motivation and the meaning behind your idea and execution. The Judges will be keen to know how your idea pushes the boundaries of code and technology. 
+Mapify is an idea I've been contemplating for a while now, after seeing the amazing work of [Ed Fairburn](http://edfairburn.com/). He creates beautiful portraits on top of geological and street maps.
+I began was wondering if it would be possible to recreate images, be it portraits or landscapes using just street topografy, basically "mapifying" images. Being passionate about mobile, I first thought about turning this into a mobile app but I could not figure out what exactly it would be: a toy, a game, an utility?
+I just hoped it will just be something beautiful to look at. And for this reason I think of DevArt as a challenge, the perfect context, an exercise into bringing this idea to life.
+
+So I am starting with this: process an image from a web camera, extract contours and lines, translate them into a map file (OSM for example) representing streets and highways and render this file as a map in the browser. Will it work? Can it work? I don't know, but that's what I'm trying to find out; and hopefully, somewhere along the way learn a thing or two and maybe figure out how would one present this in a gallery.
+Stay in touch for updates!
+
 
 ## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
-
-[Example Link](http://www.google.com "Example Link")
+Coming soon!
 
 ## Example Code
-NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
-```
-function test() {
-  console.log("Printing a test");
-}
-```
-## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
+Coming soon!
 
-[Example Link](http://www.google.com "Example Link")
+## Links to External Libraries
+[OpenCV](http://opencv.org/)
+[Google Maps](https://developers.google.com/maps/documentation/javascript/)
+
 
 ## Images & Videos
-NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
-
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
-
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+Coming soon!
