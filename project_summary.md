@@ -16,12 +16,20 @@ Stay in touch for updates!
 Coming soon!
 
 ## Example Code
-Coming soon!
+
+```python
+gray = cv2.imread('homer.jpg',0)
+edge = cv2.Canny(gray, 100, 200)
+cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+```
 
 ## Links to External Libraries
 [OpenCV](http://opencv.org/)
 [Google Maps](https://developers.google.com/maps/documentation/javascript/)
+[Numpy](http://www.numpy.org/)
 
 
 ## Images & Videos
-Coming soon!
+![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_homer_1.jpg "map")
+![contours](https://raw.github.com/rbarbantan/devart-template/master/project_images/traced_einstein_1.jpg "contours")
+![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_einstein_1.jpg "map")

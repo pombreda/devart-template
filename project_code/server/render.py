@@ -11,13 +11,16 @@ names = ['Einstein','Bohr','Darwin','Pasteur','Freud','Galilei','Kepler','Copern
 def nothing(*arg):
     pass
 
+def getUniqueId(lineIndex, pointIndex):
+    return 5000 + 1000*lineIndex + pointIndex
+
 def saveMap(contours):
     output = open('output.osm','w+')
     output.write("<osm>")
 
     for i,contour in enumerate(contours):
         for j,point in enumerate(contour):
-            id = 5000+1000*i + j
+            id = getUniqueId(i,j)
             lon = np.interp(point[0][0], [0,w],map_bounds[0])
             lat = np.interp(point[0][1], [0,h],map_bounds[1])
             output.write("<node id='{id}' visible='true' user='rbarbantan' lat='{lat}' lon='{lon}'/>".format(id=id,lat=lat,lon=lon))
@@ -25,7 +28,7 @@ def saveMap(contours):
     for i,contour in enumerate(contours):
         output.write("<way id='{id}' visible='true' user='rbarbantan'>".format(id=i))
         for j,point in enumerate(contour):
-            id = 5000+1000*i + j
+            id = getUniqueId(i,j)
             output.write("<nd ref='{id}'/>".format(id=id))
         output.write("<tag k='highway' v='residential'/>")
         output.write("<tag k='is_in:city' v='Cluj-Napoca'/>")
@@ -51,16 +54,16 @@ while(True):
 
     # Our operations on the frame come here
     #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    gray = cv2.imread('homer.jpg',0)
-    #gray = cv2.imread('einstein.jpg',0)
+    #gray = cv2.imread('homer.jpg',0)
+    gray = cv2.imread('einstein.jpg',0)
 
     h,w = gray.shape
 
-    thrs1 = cv2.getTrackbarPos('thrs1', 'edge')
-    thrs2 = cv2.getTrackbarPos('thrs2', 'edge')
-    edge = cv2.Canny(gray, thrs1, thrs2, apertureSize=5)
+    #thrs1 = cv2.getTrackbarPos('thrs1', 'edge')
+    #thrs2 = cv2.getTrackbarPos('thrs2', 'edge')
+    edge = cv2.Canny(gray, 100, 200)
 
-    ret,thresh = cv2.threshold(gray,127,255,0)
+    #ret,thresh = cv2.threshold(gray,127,255,0)
     contours, hierarchy = cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
     cv2.drawContours(gray, contours, -1, (0,255,0), 3)
