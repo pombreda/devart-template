@@ -30,6 +30,6 @@ cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 
 
 ## Images & Videos
-![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_homer_1.jpg "map")
-![contours](https://raw.github.com/rbarbantan/devart-template/master/project_images/traced_einstein_1.jpg "contours")
-![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_einstein_1.jpg "map")
+![map](../project_images/map_homer_1.jpg "map")
+![contours](../project_images/traced_einstein_1.jpg "contours")
+![map](../project_images/map_einstein_1.jpg "map")

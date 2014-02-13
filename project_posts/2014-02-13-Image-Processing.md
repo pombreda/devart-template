@@ -42,9 +42,20 @@ For now, I am going with the second option, as I am able to see the results fast
 Once on disk, I'm using [Maperitive](http://maperitive.net/) to preview the file. And I must say I'm quite satisfied with the first results. The thresholds used needed to be manually adjusted depending the type/source of the image, so I have yet to figure out what values are best for a wide range of image types.
 To give you an idea of the current status of the algorithm, I have used two sample images:
 
-1. a drawing, which gives excellent results, as it contains little noise, or colour variation, hence edges are very well defined. Below are the original image, the contours and the preview of the map.
-![original](../project_images/original_homer_1.jpg "original") ![contours](../project_images/traced_homer_1.jpg "contours") ![map](../project_images/map_homer_1.jpg "map")
-2. a picture, which produces more disparate lines, and has a lot more noise. There is still a lot of room for improvement here like removing noise, taking into account aspect ratio, etc. You can see the results below, again: original, contours, map.
-![original](../project_images/original_einstein_1.jpg "original") ![contours](../project_images/traced_einstein_1.jpg "contours") ![map](../project_images/map_einstein_1.jpg "map")
+1. a drawing, which gives excellent results, as it contains little noise, or colour variation, hence edges are very well defined. Below are:
+the original image 
+![original](../project_images/original_homer_1.jpg "original")
+the contours 
+![contours](../project_images/traced_homer_1.jpg "contours")
+and the preview of the map
+![map](../project_images/map_homer_1.jpg "map")
+
+2. a picture, which produces more disparate lines, and has a lot more noise. There is still a lot of room for improvement here like removing noise, taking into account aspect ratio, etc. You can see the results below, again:
+the original image 
+![original](../project_images/original_einstein_1.jpg "original") 
+the contours 
+![contours](../project_images/traced_einstein_1.jpg "contours") 
+and the preview of the map
+![map](../project_images/map_einstein_1.jpg "map")
 
 That's it for today, you can always check out the code for more details.
