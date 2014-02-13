@@ -3,13 +3,15 @@ My idea was to find the lines describing an image, the contour of objects in it.
 
 ```python
 gray = cv2.imread('homer.jpg',0)
-edge = cv2.Canny(gray, 100, 200)```
+edge = cv2.Canny(gray, 100, 200)
+```
 
 For a better understanding of the actual math behind it I recommend reading [this](https://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html) article/tutorial.
 But this was not enough, as I needed the actual lines (sets of connected points). Again, this proved to be an easy task in OpenCV using the [findContours](http://opencvpython.blogspot.ro/2012/06/hi-this-article-is-tutorial-which-try.html) function. Especially if applied after the Canny edge detection, it provides decent results.
 
 ```python
-cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)```
+cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+```
 
 So since I now have the contours in the image, I have two options:
 
@@ -41,8 +43,8 @@ Once on disk, I'm using [Maperitive](http://maperitive.net/) to preview the file
 To give you an idea of the current status of the algorithm, I have used two sample images:
 
 1. a drawing, which gives excellent results, as it contains little noise, or colour variation, hence edges are very well defined. Below are the original image, the contours and the preview of the map.
-![original](https://raw.github.com/rbarbantan/devart-template/master/project_images/original_homer_1.jpg "original") ![contours](https://raw.github.com/rbarbantan/devart-template/master/project_images/traced_homer_1.jpg "contours") ![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_homer_1.jpg "map")
+![original](../project_images/original_homer_1.jpg "original") ![contours](../project_images/traced_homer_1.jpg "contours") ![map](../project_images/map_homer_1.jpg "map")
 2. a picture, which produces more disparate lines, and has a lot more noise. There is still a lot of room for improvement here like removing noise, taking into account aspect ratio, etc. You can see the results below, again: original, contours, map.
-![original](https://raw.github.com/rbarbantan/devart-template/master/project_images/original_einstein_1.jpg "original") ![contours](https://raw.github.com/rbarbantan/devart-template/master/project_images/traced_einstein_1.jpg "contours") ![map](https://raw.github.com/rbarbantan/devart-template/master/project_images/map_einstein_1.jpg "map")
+![original](../project_images/original_einstein_1.jpg "original") ![contours](../project_images/traced_einstein_1.jpg "contours") ![map](../project_images/map_einstein_1.jpg "map")
 
 That's it for today, you can always check out the code for more details.
