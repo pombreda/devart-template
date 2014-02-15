@@ -3,7 +3,9 @@
 ## Rares Barbantan : @rbarbantan
 
 ## Description
-Mapify is an idea I've been contemplating for a while now, after seeing the amazing work of [Ed Fairburn](http://edfairburn.com/). He creates beautiful portraits on top of geological and street maps.
+Mapify is an idea I've been contemplating for a while now, after seeing the amazing work of [Ed Fairburn](http://edfairburn.com/). He creates beautiful portraits on top of geological and street maps like this one:
+![inspiration](../project_images/inspiration.jpg)
+
 I began wondering if it would be possible to recreate images, be it portraits or landscapes using just street topography, basically "mapifying" images. Being passionate about mobile, I first thought about turning this into a mobile app but I could not figure out what exactly it would be: a toy, a game, an utility?
 I just hoped it will just be something beautiful to look at. And for this reason I think of DevArt as a challenge, the perfect context, an exercise into bringing this idea to life.
 
