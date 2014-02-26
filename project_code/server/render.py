@@ -3,6 +3,7 @@ __author__ = 'rbarbantan'
 import numpy as np
 import cv2
 import random
+import json
 
 w = h = 0
 map_bounds = [[23.57, 23.59], [46.75, 46.74]]
@@ -14,7 +15,20 @@ def nothing(*arg):
 def getUniqueId(lineIndex, pointIndex):
     return 5000 + 1000*lineIndex + pointIndex
 
-def saveMap(contours):
+def saveMapAsGeoJson(contours):
+    map = {'type': 'FeatureCollection', 'features':[]}
+    for contour in contours:
+        c = {'type':'Feature', 'geometry':{'type':'LineString', 'coordinates':[]}}
+        for point in contour:
+            c['geometry']['coordinates'].append([np.interp(point[0][0], [0,w],map_bounds[0]),np.interp(point[0][1], [0,h],map_bounds[1])])
+        map['features'].append(c)
+
+    with open('output.json','w+') as output:
+        json.dump(map, output)
+    print('saved to json')
+
+
+def saveMapAsOSM(contours):
     output = open('output.osm','w+')
     output.write("<osm>")
 
@@ -54,14 +68,17 @@ while(True):
 
     # Our operations on the frame come here
     #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    #gray = cv2.imread('homer.jpg',0)
-    gray = cv2.imread('einstein.jpg',0)
+    gray = cv2.imread('homer.jpg',0)
+    #gray = cv2.imread('einstein.jpg',0)
 
     h,w = gray.shape
-
-    #thrs1 = cv2.getTrackbarPos('thrs1', 'edge')
-    #thrs2 = cv2.getTrackbarPos('thrs2', 'edge')
-    edge = cv2.Canny(gray, 100, 200)
+    kernel = np.ones((5,5),np.uint8)
+    gray = cv2.morphologyEx(gray, cv2.MORPH_CLOSE, kernel)
+    #gray = cv2.erode(gray,kernel,iterations = 1)
+    #gray = cv2.dilate(gray,kernel,iterations = 1)
+    thrs1 = cv2.getTrackbarPos('thrs1', 'edge')
+    thrs2 = cv2.getTrackbarPos('thrs2', 'edge')
+    edge = cv2.Canny(gray, thrs1, thrs2)
 
     #ret,thresh = cv2.threshold(gray,127,255,0)
     contours, hierarchy = cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
@@ -72,8 +89,10 @@ while(True):
     key = cv2.waitKey(1)
 
     if key == ord('s'):
-        saveMap(contours)
+        saveMapAsOSM(contours)
         cv2.imwrite('traced.png',gray)
+    elif key == ord('j'):
+        saveMapAsGeoJson(contours)
     elif key == ord('q'):
         break
 
