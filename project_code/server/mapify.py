@@ -1,12 +1,12 @@
 import mapnik
 
-m = mapnik.Map(800,600)
-m.background = mapnik.Color('steelblue')
+m = mapnik.Map(1000,500)
+m.background = mapnik.Color('#e9e5dc')
 s = mapnik.Style()
 r = mapnik.Rule()
-polygon_symbolizer = mapnik.PolygonSymbolizer(mapnik.Color('#f2eff9'))
+polygon_symbolizer = mapnik.PolygonSymbolizer(mapnik.Color('#deb'))
 r.symbols.append(polygon_symbolizer)
-line_symbolizer = mapnik.LineSymbolizer(mapnik.Color('rgb(50%,50%,50%)'),0.1)
+line_symbolizer = mapnik.LineSymbolizer(mapnik.Color('#fff'),2)
 r.symbols.append(line_symbolizer)
 s.rules.append(r)
 m.append_style('My Style',s)

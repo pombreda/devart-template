@@ -21,7 +21,8 @@ Coming soon!
 
 ```python
 gray = cv2.imread('homer.jpg',0)
-edge = cv2.Canny(gray, 100, 200)
+gray = cv2.blur(gray,(3,3))
+edge = cv2.Canny(gray, 50, 150)
 cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 ```
 
@@ -29,7 +30,8 @@ cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 [OpenCV](http://opencv.org/)
 [Google Maps](https://developers.google.com/maps/documentation/javascript/)
 [Numpy](http://www.numpy.org/)
-
+[Mapnik](http://mapnik.org/)
+[TileMill](https://www.mapbox.com/tilemill/)
 
 ## Images & Videos
 ![map](../project_images/map_homer_1.jpg "map")

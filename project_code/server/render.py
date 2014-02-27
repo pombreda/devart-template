@@ -6,7 +6,7 @@ import random
 import json
 
 w = h = 0
-map_bounds = [[23.57, 23.59], [46.75, 46.74]]
+map_bounds = [[23.58884, 23.59882], [46.74925, 46.74336]]
 names = ['Einstein','Bohr','Darwin','Pasteur','Freud','Galilei','Kepler','Copernicus','Faraday','Heisenberg']
 
 def nothing(*arg):
@@ -59,8 +59,11 @@ cap = cv2.VideoCapture(0)
 surf = cv2.SURF(400)
 
 cv2.namedWindow('edge')
-cv2.createTrackbar('thrs1', 'edge', 1000, 5000, nothing)
-cv2.createTrackbar('thrs2', 'edge', 2000, 5000, nothing)
+cv2.createTrackbar('thrs1', 'edge', 50, 100, nothing)
+cv2.createTrackbar('thrs2', 'edge', 150, 300, nothing)
+cv2.createTrackbar('thrs3', 'edge', 10, 100, nothing)
+cv2.createTrackbar('thrs4', 'edge', 10, 100, nothing)
+cv2.createTrackbar('thrs5', 'edge', 10, 100, nothing)
 
 while(True):
     # Capture frame-by-frame
@@ -68,20 +71,30 @@ while(True):
 
     # Our operations on the frame come here
     #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    gray = cv2.imread('homer.jpg',0)
-    #gray = cv2.imread('einstein.jpg',0)
+    #gray = cv2.imread('homer.jpg',0)
+    gray = cv2.imread('einstein.jpg',0)
 
     h,w = gray.shape
     kernel = np.ones((5,5),np.uint8)
-    gray = cv2.morphologyEx(gray, cv2.MORPH_CLOSE, kernel)
+    gray = cv2.blur(gray,(3,3))
+    #gray = cv2.morphologyEx(gray, cv2.MORPH_CLOSE, kernel)
     #gray = cv2.erode(gray,kernel,iterations = 1)
     #gray = cv2.dilate(gray,kernel,iterations = 1)
     thrs1 = cv2.getTrackbarPos('thrs1', 'edge')
     thrs2 = cv2.getTrackbarPos('thrs2', 'edge')
+    thrs3 = cv2.getTrackbarPos('thrs3', 'edge')
+    thrs4 = cv2.getTrackbarPos('thrs4', 'edge')
+    thrs5 = cv2.getTrackbarPos('thrs5', 'edge')
     edge = cv2.Canny(gray, thrs1, thrs2)
 
-    #ret,thresh = cv2.threshold(gray,127,255,0)
+    #lines = cv2.HoughLinesP(edge, 1, np.pi/180, thrs3, thrs4, thrs5)
+    #if lines is not None:
+    #    print(lines[0].size)
+    #    for x1,y1,x2,y2 in lines[0]:
+    #        cv2.line(gray,(x1,y1),(x2,y2),(0,255,0),2)
+
     contours, hierarchy = cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    #print("contours {contour}".format(contour = len(contours)))
 
     cv2.drawContours(gray, contours, -1, (0,255,0), 3)
     # Display the resulting frame
