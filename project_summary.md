@@ -34,6 +34,7 @@ cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 [TileMill](https://www.mapbox.com/tilemill/)
 
 ## Images & Videos
+http://www.youtube.com/watch?v=HX-Sn3gT_is
 ![map](../project_images/map_homer_1.jpg "map")
 ![contours](../project_images/traced_einstein_1.jpg "contours")
 ![map](../project_images/map_einstein_1.jpg "map")

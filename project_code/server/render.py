@@ -7,6 +7,7 @@ import json
 
 w = h = 0
 map_bounds = [[23.58884, 23.59882], [46.74925, 46.74336]]
+#map_bounds = [[0, 100], [100, 0]]
 names = ['Einstein','Bohr','Darwin','Pasteur','Freud','Galilei','Kepler','Copernicus','Faraday','Heisenberg']
 
 def nothing(*arg):
@@ -18,9 +19,9 @@ def getUniqueId(lineIndex, pointIndex):
 def saveMapAsGeoJson(contours):
     map = {'type': 'FeatureCollection', 'features':[]}
     for contour in contours:
-        c = {'type':'Feature', 'geometry':{'type':'LineString', 'coordinates':[]}}
+        c = {'type':'Feature', 'geometry':{'type':'Polygon', 'coordinates':[[]]}}
         for point in contour:
-            c['geometry']['coordinates'].append([np.interp(point[0][0], [0,w],map_bounds[0]),np.interp(point[0][1], [0,h],map_bounds[1])])
+            c['geometry']['coordinates'][0].append([np.interp(point[0][0], [0,w],map_bounds[0]),np.interp(point[0][1], [0,h],map_bounds[1])])
         map['features'].append(c)
 
     with open('output.json','w+') as output:
