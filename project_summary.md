@@ -24,6 +24,26 @@ gray = cv2.imread('homer.jpg',0)
 gray = cv2.blur(gray,(3,3))
 edge = cv2.Canny(gray, 50, 150)
 cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+...
+
+m = mapnik.Map(1000,500)
+m.background = mapnik.Color('#e9e5dc')
+s = mapnik.Style()
+r = mapnik.Rule()
+polygon_symbolizer = mapnik.PolygonSymbolizer(mapnik.Color('#deb'))
+r.symbols.append(polygon_symbolizer)
+line_symbolizer = mapnik.LineSymbolizer(mapnik.Color('#fff'),2)
+r.symbols.append(line_symbolizer)
+s.rules.append(r)
+m.append_style('My Style',s)
+ds = mapnik.Datasource(type='geojson', file='output.json')
+layer = mapnik.Layer('world')
+layer.datasource = ds
+layer.styles.append('My Style')
+m.layers.append(layer)
+m.zoom_all()
+mapnik.render_to_file(m,'world.png', 'png')
 ```
 
 ## Links to External Libraries
@@ -32,6 +52,7 @@ cv2.findContours(edge,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
 [Numpy](http://www.numpy.org/)
 [Mapnik](http://mapnik.org/)
 [TileMill](https://www.mapbox.com/tilemill/)
+[Tilestache](http://tilestache.org/)
 
 ## Images & Videos
 http://www.youtube.com/watch?v=HX-Sn3gT_is
