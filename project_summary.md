@@ -11,11 +11,7 @@ I just hoped it will just be something beautiful to look at. And for this reason
 
 So I am starting with this: process an image from a web camera, extract contours and lines, translate them into a map file representing streets and highways and render this file as a map in the browser. Will it work? Can it work? I don't know, but that's what I'm trying to find out; and hopefully, somewhere along the way learn a thing or two and maybe figure out how would one present this in a gallery.
 
-Stay in touch for updates!
-
-
-## Link to Prototype
-Coming soon!
+Please follow the other posts for updates!
 
 ## Example Code
 
